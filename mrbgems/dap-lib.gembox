@@ -1,0 +1,5 @@
+MRuby::GemBox.new do |conf|
+  # angeldnd-dap Gems
+  conf.gem :core => "mruby-eval"
+  conf.gem :dap => "../../mrbgems/dap-core"
+end

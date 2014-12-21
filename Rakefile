@@ -12,7 +12,8 @@ file "ios_build_config.rb" do
 MRuby::Build.new do |conf|
   toolchain :clang
 
-  conf.gembox '../../dap_host'
+  conf.gembox '../../mrbgems/default-host'
+  conf.gembox '../../mrbgems/dap-lib'
 end
 
 SIM_SYSROOT="#{SIMSDKPATH}"
@@ -21,7 +22,8 @@ DEVICE_SYSROOT="#{IOSSDKPATH}"
 MRuby::CrossBuild.new('ios-simulator-x86_64') do |conf|
   conf.bins = []
 
-  conf.gembox '../../dap_ios'
+  conf.gembox '../../mrbgems/default-ios'
+  conf.gembox '../../mrbgems/dap-lib'
 
   conf.cc do |cc|
     cc.command = 'xcrun'
@@ -37,7 +39,8 @@ end
 MRuby::CrossBuild.new('ios-armv7') do |conf|
   conf.bins = []
 
-  conf.gembox '../../dap_ios'
+  conf.gembox '../../mrbgems/default-ios'
+  conf.gembox '../../mrbgems/dap-lib'
 
   conf.cc do |cc|
     cc.command = 'xcrun'
@@ -53,7 +56,8 @@ end
 MRuby::CrossBuild.new('ios-armv7s') do |conf|
   conf.bins = []
 
-  conf.gembox '../../dap_ios'
+  conf.gembox '../../mrbgems/default-ios'
+  conf.gembox '../../mrbgems/dap-lib'
   conf.cc do |cc|
     cc.command = 'xcrun'
     cc.flags = %W(-sdk iphoneos clang -arch armv7s -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -Werror-implicit-function-declaration)
@@ -68,7 +72,8 @@ end
 MRuby::CrossBuild.new('ios-arm64') do |conf|
   conf.bins = []
 
-  conf.gembox '../../dap_ios'
+  conf.gembox '../../mrbgems/default-ios'
+  conf.gembox '../../mrbgems/dap-lib'
   conf.cc do |cc|
     cc.command = 'xcrun'
     cc.flags = %W(-sdk iphoneos clang -arch arm64 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -Werror-implicit-function-declaration)
